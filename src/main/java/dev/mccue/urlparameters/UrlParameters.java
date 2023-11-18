@@ -5,6 +5,7 @@ import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
 import java.util.function.Consumer;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public record UrlParameters(List<UrlParameter> parameters)
@@ -78,5 +79,12 @@ public record UrlParameters(List<UrlParameter> parameters)
             }
         }
         return Collections.unmodifiableList(values);
+    }
+
+    @Override
+    public String toString() {
+        return parameters.stream()
+                .map(UrlParameter::toString)
+                .collect(Collectors.joining("&"));
     }
 }

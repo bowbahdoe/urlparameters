@@ -98,4 +98,51 @@ public class UrlParametersTest {
                 l
         );
     }
+
+    @Test
+    public void reverseToString() {
+        var str = "a=b&hello=world&other=some%20value";
+        var params = UrlParameters.parse(str);
+        assertEquals(str, params.toString());
+        assertEquals(params, UrlParameters.parse(params.toString()));
+    }
+
+    @Test
+    public void spacesToString() {
+        var params = new UrlParameters(List.of(
+                new UrlParameter("hello", "some value")
+        ));
+        assertEquals("hello=some%20value", params.toString());
+    }
+
+    @Test
+    public void parseSpaces() {
+        var str1 = "other+thing=some%20value";
+        var str2 = "other%20thing=some+value";
+
+        assertEquals(
+                UrlParameters.parse(str1),
+                UrlParameters.parse(str2)
+        );
+
+        assertEquals(
+                new UrlParameters(List.of(
+                        new UrlParameter(
+                                "other thing",
+                                "some value"
+                        )
+                )),
+                UrlParameters.parse(str1)
+        );
+
+        assertEquals(
+                new UrlParameters(List.of(
+                        new UrlParameter(
+                                "other thing",
+                                "some value"
+                        )
+                )),
+                UrlParameters.parse(str2)
+        );
+    }
 }
