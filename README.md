@@ -1,5 +1,7 @@
 # urlparameters
 
+[![javadoc](https://javadoc.io/badge2/dev.mccue/urlparameters/javadoc.svg)](https://javadoc.io/doc/dev.mccue/urlparameters)
+
 Utility for parsing url parameters.
 
 ## Dependency Information
