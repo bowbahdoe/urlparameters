@@ -14,6 +14,90 @@ public record UrlParameters(List<UrlParameter> parameters)
         this.parameters = List.copyOf(parameters);
     }
 
+    public UrlParameters(
+            UrlParameter... parameters
+    ) {
+        this(Arrays.asList(parameters));
+    }
+
+    public UrlParameters(
+            String k1, String v1
+    ) {
+        this(List.of(
+                new UrlParameter(k1, v1)
+        ));
+    }
+
+    public UrlParameters(
+            String k1, String v1,
+            String k2, String v2
+    ) {
+        this(List.of(
+                new UrlParameter(k1, v1),
+                new UrlParameter(k2, v2)
+        ));
+    }
+
+    public UrlParameters(
+            String k1, String v1,
+            String k2, String v2,
+            String k3, String v3
+    ) {
+        this(List.of(
+                new UrlParameter(k1, v1),
+                new UrlParameter(k2, v2),
+                new UrlParameter(k3, v3)
+        ));
+    }
+
+    public UrlParameters(
+            String k1, String v1,
+            String k2, String v2,
+            String k3, String v3,
+            String k4, String v4
+    ) {
+        this(List.of(
+                new UrlParameter(k1, v1),
+                new UrlParameter(k2, v2),
+                new UrlParameter(k3, v3),
+                new UrlParameter(k4, v4)
+        ));
+    }
+
+    public UrlParameters(
+            String k1, String v1,
+            String k2, String v2,
+            String k3, String v3,
+            String k4, String v4,
+            String k5, String v5
+    ) {
+        this(List.of(
+                new UrlParameter(k1, v1),
+                new UrlParameter(k2, v2),
+                new UrlParameter(k3, v3),
+                new UrlParameter(k4, v4),
+                new UrlParameter(k5, v5)
+        ));
+    }
+
+    public UrlParameters(
+            String k1, String v1,
+            String k2, String v2,
+            String k3, String v3,
+            String k4, String v4,
+            String k5, String v5,
+            String k6, String v6
+    ) {
+        this(List.of(
+                new UrlParameter(k1, v1),
+                new UrlParameter(k2, v2),
+                new UrlParameter(k3, v3),
+                new UrlParameter(k4, v4),
+                new UrlParameter(k5, v5),
+                new UrlParameter(k6, v6)
+        ));
+    }
+
     public static UrlParameters parse(URI uri) {
         var params = uri.getRawQuery();
         return parse(params == null ? "" : params);
