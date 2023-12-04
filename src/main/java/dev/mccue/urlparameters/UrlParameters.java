@@ -1,5 +1,7 @@
 package dev.mccue.urlparameters;
 
+import com.uwyn.urlencoder.UrlEncoder;
+
 import java.net.URI;
 import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
@@ -113,13 +115,13 @@ public record UrlParameters(List<UrlParameter> parameters)
                                     return;
                                 }
                                 cb.accept(new UrlParameter(
-                                        URLDecoder.decode(pair[0], StandardCharsets.UTF_8),
+                                        UrlEncoder.decode(pair[0]),
                                         ""
                                 ));
                             } else if (pair.length == 2) {
                                 cb.accept(new UrlParameter(
-                                        URLDecoder.decode(pair[0], StandardCharsets.UTF_8),
-                                        URLDecoder.decode(pair[1], StandardCharsets.UTF_8)
+                                        UrlEncoder.decode(pair[0]),
+                                        UrlEncoder.decode(pair[1])
                                 ));
                             }
                         })
