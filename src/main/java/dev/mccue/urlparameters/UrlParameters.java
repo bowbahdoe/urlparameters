@@ -3,8 +3,6 @@ package dev.mccue.urlparameters;
 import com.uwyn.urlencoder.UrlEncoder;
 
 import java.net.URI;
-import java.net.URLDecoder;
-import java.nio.charset.StandardCharsets;
 import java.util.*;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
