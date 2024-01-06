@@ -145,4 +145,14 @@ public class UrlParametersTest {
                 UrlParameters.parse(str2)
         );
     }
+
+    @Test
+    public void parsePlus() {
+        assertEquals(
+                "a b",
+                UrlParameters.parse("name=a+b")
+                        .firstValue("name")
+                        .orElseThrow()
+        );
+    }
 }

@@ -3,6 +3,8 @@ package dev.mccue.urlparameters;
 import com.uwyn.urlencoder.UrlEncoder;
 
 import java.net.URI;
+import java.net.URLDecoder;
+import java.nio.charset.StandardCharsets;
 import java.util.*;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
@@ -109,17 +111,17 @@ public record UrlParameters(List<UrlParameter> parameters)
                         .map(pair -> pair.split("=", 2))
                         .mapMulti((String[] pair, Consumer<UrlParameter> cb) -> {
                             if (pair.length == 1) {
-                                if ("".equals(pair[0])) {
+                                if (pair[0].isEmpty()) {
                                     return;
                                 }
                                 cb.accept(new UrlParameter(
-                                        UrlEncoder.decode(pair[0]),
+                                        URLDecoder.decode(pair[0], StandardCharsets.UTF_8),
                                         ""
                                 ));
                             } else if (pair.length == 2) {
                                 cb.accept(new UrlParameter(
-                                        UrlEncoder.decode(pair[0]),
-                                        UrlEncoder.decode(pair[1])
+                                        URLDecoder.decode(pair[0], StandardCharsets.UTF_8),
+                                        URLDecoder.decode(pair[1], StandardCharsets.UTF_8)
                                 ));
                             }
                         })
