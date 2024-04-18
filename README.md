@@ -12,7 +12,7 @@ Utility for parsing url parameters.
 <dependency>
     <groupId>dev.mccue</groupId>
     <artifactId>urlparameters</artifactId>
-    <version>0.2.0</version>
+    <version>2024.01.05</version>
 </dependency>
 ```
 
@@ -20,7 +20,7 @@ Utility for parsing url parameters.
 
 ```groovy
 dependencies {
-    implementation("dev.mccue:urlparameters:0.2.0")
+    implementation("dev.mccue:urlparameters:2024.01.05")
 }
 ```
 
